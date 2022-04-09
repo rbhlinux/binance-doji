@@ -1,0 +1,25 @@
+import os
+from binance.client import Client
+binance_api="fL2eE0aJzXuHnPocjqL5CLWVz0BYuIoLkhgUZqykOHxfH1uwMFCGXoJLFcsJXv3Y"
+binance_secret="iNkQTZLX2IyG1IsIl9W1GoKQgvNmwV7AQqFrXA7X4rxmrFVc3kYsSuIlVGZVZoC9"
+client = Client(binance_api,binance_secret)
+print(client)
+
+client.get_symbol_ticker(symbol="BTCUSDT")
+timestamp=client._get_earliest_valid_timestamp('NEARUSDT','4h')
+timestamp=1649188800000
+
+#CREATE TIMESTAMP COVERTER FOR EPOCH and CHOOSE 1 WEEK BEFORE DATE AND 12:00 TIME
+
+
+###########33CALL ONLY ONCE
+bars= client.get_historical_klines('NEARUSDT','4h',timestamp,limit=500)
+#############
+
+import pandas as pd 
+for line in bars:
+    del line[6:]
+
+df1 = pd.DataFrame(bars, columns=['date', 'open', 'high', 'low', 'close','volume'])
+df1.set_index('date',inplace=True)
+df1
