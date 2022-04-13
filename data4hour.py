@@ -14,8 +14,8 @@ def dateformat(epochxxx):
     my_time=datetime.fromtimestamp(epoch).strftime('%d-%b-%y %H:%M')
     return my_time
 
-binance_api="fL2eE0aJzXuHnPocjqL5CLWVz0BYuIoLkhgUZqykOHxfH1uwMFCGXoJLFcsJXv3Y"
-binance_secret="iNkQTZLX2IyG1IsIl9W1GoKQgvNmwV7AQqFrXA7X4rxmrFVc3kYsSuIlVGZVZoC9"
+binance_api=<api>
+binance_secret=<secret>
 client = Client(binance_api,binance_secret)
 
 dt = datetime.today() - timedelta(days=3)
